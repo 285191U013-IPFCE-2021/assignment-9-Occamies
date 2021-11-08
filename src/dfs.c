@@ -1,100 +1,40 @@
-/*
- * Search an expression using DFS.
- */
+#include <stdbool.h> //bool, true, false
 
-#include <stdio.h>		/* scanf, printf */
-#include <stdlib.h>		/* abort */
-#include <stdbool.h>		/* bool, true, false */
-#include "dfs.h"
-
-
-void DFT (node * root)
-{
+typedef struct node{
   
-	// Implement DFS
-	// Hint: You can use print_node, print_tree and/or print_stack.
-  printf(tree);
-}
+  int num;
+  bool visited;
+  struct node *lchild;
+  struct node *rchild; 
+} node;
 
-node *make_node (int num, node * left, node * right)
-{
-	return 0;
-}
+typedef struct stack{
 
-void free_node (node * p)
-{
-	
-}
+  struct item *head;
+} stack;
 
+typedef struct item{
 
-void print_node (node * p)
-{
+  struct node *node;
+  struct node *next;
+} item;
+node *make_node (int num, node * left, node * right);
 
-  if (p == NULL)
-    printf ("NULL\n");
-  else
-    printf ("%d", p->num);
-}
+void free_node (node * p);
 
+void print_node (node * p);
 
-void print_tree (node * p, int depth)
-{
-  for (int i = 0; i < depth; i = i + 1)
-    printf (" ");
-  printf ("| ");
+void print_tree (node * p, int depth);
 
-  if (p == NULL)
-    printf ("NULL\n");
-  else
-    printf ("[%d]\n", p->num);
+stack *recursiveDFT (node *root, stack *s);
+
+void DFT (node * root);
 
 
-  if (p->lchild)
-    {
-      print_tree (p->lchild, depth + 1);
-    }
+void push (stack * topp, node * node);
 
-  if (p->rchild)
-    print_tree (p->rchild, depth + 1);
-}
+bool isEmpty (stack * topp);
 
-stack *push (stack * topp, node * node)
-{
-	return 0;
-}
+stack *pop (stack * topp);
 
-bool isEmpty (stack * topp)
-{
-  return false;
-}
-
-node *top (stack * topp)
-{
-	return 0;
-}
-
-// Utility function to pop topp  
-// element from the stack 
-
-stack *pop (stack * topp)
-{
-	return 0;
-}
-
-void print_stack (stack * topp)
-{
-  struct stack *temp = topp;
-
-  while (temp != NULL)
-    {
-
-      print_node (temp->node);
-      printf ("\n");
-
-      temp = temp->next;
-    }
-
-  printf ("====\n");
-
-  return;
-}
+void print_stack (item *item);
